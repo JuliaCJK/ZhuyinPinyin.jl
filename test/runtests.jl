@@ -456,4 +456,14 @@ pinyin_to_zhuyin = Dict((value, key) for (key, value) in zhuyin_to_pinyin)
         @test to_zhuyin("lu:e") == to_zhuyin("lüe")
     end
 
+    @testset "preserve partial sequences" begin
+        partials = ["ch", "sh", "co", "ts", "x", "y"]
+        for partial_string in partials
+            @test to_zhuyin(partial_string) == partial_string
+        end
+
+        @test to_zhuyin("ch sh co x y w") == "ch sh co x y w"
+        @test to_zhuyin("chshcoxyw") == "chshcoxyw"
+    end
+
 end

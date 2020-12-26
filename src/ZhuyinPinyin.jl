@@ -9,15 +9,20 @@ include("tries.jl")
 function replace_by_trie(source, trie)
     dest = String[]
 
+    since_last_start = Char[]
     current_trie = trie
     for char in source
         if char in keys(current_trie.children)
+            push!(since_last_start, char)
             current_trie = current_trie.children[char]
         else
-            current_trie.is_key && push!(dest, current_trie.value)
+            push!(dest, current_trie.is_key ? current_trie.value : join(since_last_start))
+            empty!(since_last_start)
+
             current_trie = trie
 
             if char in keys(current_trie.children)
+                push!(since_last_start, char)
                 current_trie = current_trie.children[char]
             else
                 push!(dest, string(char))
@@ -25,9 +30,7 @@ function replace_by_trie(source, trie)
         end
     end
 
-    if current_trie.is_key
-        push!(dest, current_trie.value)
-    end
+    push!(dest, current_trie.is_key ? current_trie.value : join(since_last_start))
 
     return join(dest)
 end
