@@ -179,8 +179,10 @@ const zhuyin_trie = Trie{String}([
     ("lou", "ㄌㄡ"),
     ("lu", "ㄌㄨ"),
     ("lü", "ㄌㄩ"),
+    ("lu:", "ㄌㄩ"),  # manual addition for alternate typing
     ("luan", "ㄌㄨㄢ"),
     ("lüe", "ㄌㄩㄝ"),
+    ("lu:e", "ㄌㄩㄝ"),  # manual addition for alternate typing
     ("lun", "ㄌㄨㄣ"),
     ("luo", "ㄌㄨㄛ"),
     ("ma", "ㄇㄚ"),
