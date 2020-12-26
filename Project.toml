@@ -1,0 +1,9 @@
+name = "ZhuyinPinyin"
+uuid = "38ead3be-40a5-4d68-aee6-2f69844d9ad8"
+authors = ["Timothy Lin <32549553+tmthyln@users.noreply.github.com>"]
+version = "0.1.0"
+
+[deps]
+
+[compat]
+julia = "^1"
