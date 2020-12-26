@@ -8,6 +8,19 @@ julia> to_zhuyin("bian lian")
 "ㄅㄧㄢ ㄌㄧㄢ"
 ```
 
+For example, here is an ambiguous case (gives different results with and without a separator).
+```julia-repl
+julia> to_zhuyin("cha nan")
+"ㄔㄚ ㄋㄢ"
+
+julia> to_zhuyin("chan an")
+"ㄔㄢ ㄢ"
+
+julia> to_zhuyin("chanan")
+"ㄔㄢㄢ"
+```
+Conversion will greedily match from the left.
+
 ## API Reference
 ```@docs
 to_zhuyin

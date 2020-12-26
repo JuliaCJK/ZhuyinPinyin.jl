@@ -436,4 +436,24 @@ pinyin_to_zhuyin = Dict((value, key) for (key, value) in zhuyin_to_pinyin)
             @test zhuyin == to_zhuyin(pinyin)
         end
     end
+
+    @testset "2-char conversions w/ no separator" begin
+        test_examples = [
+            ("ㄅㄧㄥ", "ㄔㄤ"),
+            ("chan", "nan")
+        ]
+
+        for (char1, char2) in test_examples
+            separated = string(char1, " ", char2)
+            non_separated = string(char1, char2)
+            @test replace(to_pinyin(separated), " " => "") == to_pinyin(non_separated)
+            @test replace(to_zhuyin(separated), " " => "") == to_zhuyin(non_separated)
+        end
+    end
+
+    @testset "special cases for u:" begin
+        @test to_zhuyin("lu:") == to_zhuyin("lü")
+        @test to_zhuyin("lu:e") == to_zhuyin("lüe")
+    end
+
 end

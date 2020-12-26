@@ -16,7 +16,12 @@ function replace_by_trie(source, trie)
         else
             current_trie.is_key && push!(dest, current_trie.value)
             current_trie = trie
-            push!(dest, string(char))
+
+            if char in keys(current_trie.children)
+                current_trie = current_trie.children[char]
+            else
+                push!(dest, string(char))
+            end
         end
     end
 
