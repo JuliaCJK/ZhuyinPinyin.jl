@@ -1,6 +1,6 @@
 module ZhuyinPinyin
 
-export to_pinyin, to_zhuyin, Zhuyin, Pinyin
+export to_pinyin, to_zhuyin, Zhuyin, Pinyin, is_possible
 
 using DataStructures
 
@@ -72,6 +72,12 @@ julia> to_pinyin("ㄏㄨ2 ㄕㄨㄛ1 ㄅㄚ1 ㄉㄠ4")
 to_pinyin(zhuyin) = _replace_by_trie(zhuyin, pinyin_trie)
 to_pinyin(zhuyin::Zhuyin) = _replace_by_trie(zhuyin.contents, pinyin_trie)
 to_pinyin(zhuyin::Pinyin) = zhuyin.contents
+
+"""
+    is_possible(pronunciation)
+"""
+is_possible(pinyin::Pinyin) = haskey(zhuyin_trie, pinyin.contents)
+is_possible(zhuyin::Zhuyin) = haskey(pinyin_trie, zhuyin.contents)
 
 
 end
