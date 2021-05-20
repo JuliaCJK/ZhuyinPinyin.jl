@@ -1,7 +1,7 @@
 name = "ZhuyinPinyin"
 uuid = "38ead3be-40a5-4d68-aee6-2f69844d9ad8"
 authors = ["Timothy Lin <32549553+tmthyln@users.noreply.github.com>"]
-version = "1.0.0"
+version = "1.0.1"
 
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"

@@ -1,12 +1,14 @@
 module ZhuyinPinyin
 
-export to_pinyin, to_zhuyin
+export to_pinyin, to_zhuyin, Zhuyin, Pinyin
 
 using DataStructures
 
 include("tries.jl")
+include("pronunciations.jl")
 
-function replace_by_trie(source, trie)
+
+function _replace_by_trie(source, trie)
     dest = String[]
 
     since_last_start = Char[]
@@ -49,7 +51,9 @@ julia> to_zhuyin("shou4 dao4 wei3 qu5")
 "ㄕㄡ4 ㄉㄠ4 ㄨㄟ3 ㄑㄩ5"
 ```
 """
-to_zhuyin(pinyin) = replace_by_trie(pinyin, zhuyin_trie)
+to_zhuyin(pinyin) = _replace_by_trie(pinyin, zhuyin_trie)
+to_zhuyin(pinyin::Pinyin) = _replace_by_trie(pinyin.contents, zhuyin_trie)
+to_zhuyin(pinyin::Zhuyin) = pinyin.contents
 
 """
     to_pinyin(zhuyin)
@@ -65,6 +69,9 @@ julia> to_pinyin("ㄏㄨ2 ㄕㄨㄛ1 ㄅㄚ1 ㄉㄠ4")
 "hu2 shuo1 ba1 dao4"
 ```
 """
-to_pinyin(zhuyin) = replace_by_trie(zhuyin, pinyin_trie)
+to_pinyin(zhuyin) = _replace_by_trie(zhuyin, pinyin_trie)
+to_pinyin(zhuyin::Zhuyin) = _replace_by_trie(zhuyin.contents, pinyin_trie)
+to_pinyin(zhuyin::Pinyin) = zhuyin.contents
+
 
 end

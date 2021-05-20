@@ -416,8 +416,8 @@ pinyin_to_zhuyin = Dict((value, key) for (key, value) in zhuyin_to_pinyin)
 @testset "conversion tests" begin
     @testset "single char zhuyin-pinyin conversion" begin
         for (zhuyin, pinyin) in zhuyin_to_pinyin
-            @test pinyin == to_pinyin(zhuyin)
-            @test zhuyin == to_zhuyin(pinyin)
+            @test pinyin == to_pinyin(zhuyin) == to_pinyin(Zhuyin(zhuyin))
+            @test zhuyin == to_zhuyin(pinyin) == to_zhuyin(Pinyin(pinyin))
         end
     end
 

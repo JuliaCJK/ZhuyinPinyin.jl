@@ -4,4 +4,4 @@
 
 Simple Julia package for converting between zhuyin and pinyin pronunciation representations. This package just exports 2 functions: `to_zhuyin` and `to_pinyin`. (More support is planned in the future for other Chinese phonetic systems, e.g. Wade-Giles.)
 
-See the [documentation](https://tmthyln.github.io/ZhuyinPinyin.jl/latest/) for a bit more detail on the behavior on these functions.
+See the [documentation](https://tmthyln.github.io/ZhuyinPinyin.jl/latest/) for more details on the behavior on these functions.
