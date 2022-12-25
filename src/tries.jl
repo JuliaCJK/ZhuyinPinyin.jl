@@ -1,3 +1,6 @@
+# This is really just a data file
+# Each trie should contain all possible single-character representations
+
 const zhuyin_trie = Trie{String}([
     ("a", "ㄚ"),
     ("ai", "ㄞ"),
