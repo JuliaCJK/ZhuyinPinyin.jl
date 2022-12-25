@@ -10,11 +10,11 @@ makedocs(
     modules=[ZhuyinPinyin],
     pages=[
         "Home" => "index.md"
-    ]
+    ],
 )
 
 deploydocs(
-    repo = "github.com/tmthyln/ZhuyinPinyin.jl.git",
+    repo = "github.com/JuliaCJK/ZhuyinPinyin.jl.git",
     devbranch = "main",
-    devurl="latest"
-    )
+    devurl="latest",
+)
