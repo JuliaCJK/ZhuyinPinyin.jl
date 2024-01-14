@@ -4,17 +4,16 @@ using Documenter, ZhuyinPinyin
 
 makedocs(
     sitename="ZhuyinPinyin.jl Documentation",
-    format=Documenter.HTML(
-        prettyurls=get(ENV, "CI", nothing) == "true"
-    ),
-    modules=[ZhuyinPinyin],
+    #modules=[ZhuyinPinyin],
     pages=[
         "Home" => "index.md"
     ],
 )
 
-deploydocs(
-    repo = "github.com/JuliaCJK/ZhuyinPinyin.jl.git",
-    devbranch = "main",
-    devurl="latest",
-)
+if get(ENV, "CI", nothing) == "true"
+    deploydocs(
+        repo = "github.com/JuliaCJK/ZhuyinPinyin.jl.git",
+        devbranch = "main",
+        devurl="latest",
+    )
+end
